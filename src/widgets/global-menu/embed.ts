@@ -2,13 +2,15 @@
  * CAT Global Menu Widget — Embed Entry Point
  *
  * Usage on any HTML page:
- *   <div id="cat-global-menu"></div>
  *   <script src="cat-global-menu.js"></script>
  *   <script>
- *     CATGlobalMenu.mount('#cat-global-menu', {
- *       appName: 'My App',
- *       onNavigate: (href) => console.log('Navigate to', href)
+ *     // Mount once (hidden by default)
+ *     var menu = CATGlobalMenu.mount({
+ *       onClose: () => console.log('closed'),
  *     });
+ *
+ *     // Open from any button/event on the host page
+ *     document.getElementById('my-menu-btn').addEventListener('click', () => menu.open());
  *   </script>
  */
 
@@ -16,26 +18,64 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { GlobalMenuWidget, GlobalMenuWidgetProps } from "./GlobalMenuWidget";
 
-type MountOptions = GlobalMenuWidgetProps;
+interface MountOptions extends Omit<GlobalMenuWidgetProps, "isOpen" | "onClose"> {
+  onClose?: () => void;
+}
 
-function mount(selector: string | HTMLElement, options: MountOptions = {}) {
-  const container =
-    typeof selector === "string" ? document.querySelector(selector) : selector;
+interface MenuInstance {
+  open: () => void;
+  close: () => void;
+  toggle: () => void;
+  unmount: () => void;
+}
 
-  if (!container) {
-    console.error(`[CATGlobalMenu] Element not found: ${selector}`);
-    return null;
+function mount(options: MountOptions = {}): MenuInstance {
+  // Create a dedicated container at the body level so z-index and fixed
+  // positioning are never clipped by a parent with overflow:hidden or transform.
+  const container = document.createElement("div");
+  container.id = "cat-global-menu-root";
+  document.body.appendChild(container);
+
+  let isOpen = false;
+  const root = createRoot(container);
+
+  function render() {
+    root.render(
+      React.createElement(GlobalMenuWidget, {
+        ...options,
+        isOpen,
+        onClose: () => {
+          isOpen = false;
+          render();
+          options.onClose?.();
+        },
+      })
+    );
   }
 
-  const root = createRoot(container);
-  root.render(React.createElement(GlobalMenuWidget, options));
+  render();
 
-  return {
-    unmount: () => root.unmount(),
-    update: (newOptions: MountOptions) => {
-      root.render(React.createElement(GlobalMenuWidget, newOptions));
+  const instance: MenuInstance = {
+    open() {
+      isOpen = true;
+      render();
+    },
+    close() {
+      isOpen = false;
+      render();
+    },
+    toggle() {
+      isOpen = !isOpen;
+      render();
+    },
+    unmount() {
+      root.unmount();
+      container.remove();
     },
   };
+
+  (window as any).CATGlobalMenu._instance = instance;
+  return instance;
 }
 
 (window as any).CATGlobalMenu = { mount };

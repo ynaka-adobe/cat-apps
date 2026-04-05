@@ -27,242 +27,397 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
-const defaultNavItems = [{
-  label: "Products",
-  href: "/products",
-  children: [{
-    label: "Excavators",
-    href: "/products/excavators"
-  }, {
-    label: "Wheel Loaders",
-    href: "/products/wheel-loaders"
-  }, {
-    label: "Track-Type Tractors",
-    href: "/products/tractors"
-  }, {
-    label: "Motor Graders",
-    href: "/products/graders"
-  }]
+// ── SVG Icons ────────────────────────────────────────────────────────────────
+
+function IconGlobe() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+    width: "26",
+    height: "26",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "#333",
+    strokeWidth: "1.5",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+      cx: "12",
+      cy: "12",
+      r: "10"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+      d: "M2 12h20"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+      d: "M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+    })]
+  });
+}
+function IconCart() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+    width: "26",
+    height: "26",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "#333",
+    strokeWidth: "1.5",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+      d: "M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("line", {
+      x1: "3",
+      y1: "6",
+      x2: "21",
+      y2: "6"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+      d: "M16 10a4 4 0 0 1-8 0"
+    })]
+  });
+}
+function IconRefresh() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+    width: "26",
+    height: "26",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "#333",
+    strokeWidth: "1.5",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+      d: "M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+      d: "M3 3v5h5"
+    })]
+  });
+}
+function IconRent() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+    width: "26",
+    height: "26",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "#333",
+    strokeWidth: "1.5",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+      cx: "9",
+      cy: "7",
+      r: "4"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+      d: "M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+      d: "M16 3.13a4 4 0 0 1 0 7.75"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+      d: "M21 21v-2a4 4 0 0 0-3-3.85"
+    })]
+  });
+}
+function IconTools() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+    width: "26",
+    height: "26",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "#333",
+    strokeWidth: "1.5",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+      d: "M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+    })
+  });
+}
+function IconFinance() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+    width: "26",
+    height: "26",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "#333",
+    strokeWidth: "1.5",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
+      x: "2",
+      y: "3",
+      width: "20",
+      height: "18",
+      rx: "2"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+      d: "M8 10h8M8 14h5"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+      d: "M12 6v2M12 16v2"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+      cx: "12",
+      cy: "12",
+      r: "2"
+    })]
+  });
+}
+
+// ── Default menu items ────────────────────────────────────────────────────────
+
+const DEFAULT_MENU_ITEMS = [{
+  id: "explore",
+  title: "Explore Products",
+  description: "Browse All Products On Cat.Com",
+  url: "https://www.cat.com",
+  icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(IconGlobe, {})
 }, {
-  label: "Services",
-  href: "/services",
-  children: [{
-    label: "Cat Financial",
-    href: "/services/financial"
-  }, {
-    label: "Cat Inspect",
-    href: "/services/inspect"
-  }, {
-    label: "Parts & Service",
-    href: "/services/parts"
-  }]
+  id: "buy",
+  title: "Buy Online",
+  description: "Shop Products & More From Our Family Of Online Store",
+  url: "https://shop.cat.com",
+  icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(IconCart, {})
 }, {
-  label: "Dealer Locator",
-  href: "/dealers"
+  id: "used",
+  title: "Find Used Products",
+  description: "Shop For Certified Used Products",
+  url: "https://catused.cat.com",
+  icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(IconRefresh, {})
 }, {
-  label: "Support",
-  href: "/support"
+  id: "rent",
+  title: "Rent Products",
+  description: "Find Rentals At Your Nearest Dealer",
+  url: "https://rent.cat.com",
+  icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(IconRent, {})
+}, {
+  id: "equipment",
+  title: "Manage My Equipment",
+  description: "Manage Your Fleet On VisionLink",
+  url: "https://vl.cat.com",
+  icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(IconTools, {})
+}, {
+  id: "finance",
+  title: "View Finance Solutions",
+  description: "Explore Financing Options On Cat Financials",
+  url: "https://www.cat.com/en_US/support/finance.html",
+  icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(IconFinance, {})
 }];
+
+// ── Component ─────────────────────────────────────────────────────────────────
+
 function GlobalMenuWidget({
-  appName = "CAT",
-  navItems = defaultNavItems,
-  onNavigate
+  isOpen: isOpenProp,
+  onClose,
+  menuItems = DEFAULT_MENU_ITEMS,
+  title = "Cat Applications"
 }) {
-  const [openDropdown, setOpenDropdown] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
-  const [mobileOpen, setMobileOpen] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const handleNav = (e, href) => {
-    if (onNavigate) {
-      e.preventDefault();
-      onNavigate(href);
+  // Support both controlled (isOpen prop) and uncontrolled (internal state) usage
+  const isControlled = isOpenProp !== undefined;
+  const [internalOpen, setInternalOpen] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [visible, setVisible] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false); // drives CSS transition
+
+  const isOpen = isControlled ? isOpenProp : internalOpen;
+
+  // Animate in/out
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (isOpen) {
+      // Mount first, then trigger transition next frame
+      setVisible(true);
+      const raf = requestAnimationFrame(() => {
+        requestAnimationFrame(() => setVisible(true));
+      });
+      return () => cancelAnimationFrame(raf);
+    } else {
+      setVisible(false);
     }
+  }, [isOpen]);
+  const handleClose = () => {
+    if (!isControlled) setInternalOpen(false);
+    onClose?.();
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+
+  // Trap keyboard Escape
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const onKey = e => {
+      if (e.key === "Escape" && isOpen) handleClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isOpen]);
+
+  // Lock body scroll when open
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+  const panelStyle = {
+    position: "fixed",
+    top: 0,
+    right: 0,
+    width: "100%",
+    maxWidth: "400px",
+    height: "100%",
+    backgroundColor: "#ffffff",
+    boxShadow: "-4px 0 24px rgba(0, 0, 0, 0.15)",
+    display: "flex",
+    flexDirection: "column",
+    zIndex: 10001,
+    transform: isOpen && visible ? "translateX(0)" : "translateX(100%)",
+    transition: "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+    fontFamily: "Arial, Helvetica, sans-serif"
+  };
+  const backdropStyle = {
+    position: "fixed",
+    inset: 0,
+    backgroundColor: "rgba(0, 0, 0, 0.4)",
+    zIndex: 10000,
+    opacity: isOpen && visible ? 1 : 0,
+    transition: "opacity 0.3s ease",
+    pointerEvents: isOpen ? "auto" : "none"
+  };
+  if (!isOpen && !visible) return null;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     className: "cat-widget-root",
     style: {
       fontFamily: "Arial, Helvetica, sans-serif"
     },
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("nav", {
-      style: {
-        backgroundColor: "#1A1A1A",
-        color: "#ffffff",
-        position: "relative",
-        zIndex: 1000
-      },
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      style: backdropStyle,
+      onClick: handleClose,
+      "aria-hidden": "true"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      style: panelStyle,
+      role: "dialog",
+      "aria-modal": "true",
+      "aria-label": title,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
         style: {
-          maxWidth: "1280px",
-          margin: "0 auto",
-          padding: "0 16px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          height: "60px"
+          padding: "20px 20px 16px",
+          borderBottom: "1px solid #e5e5e5",
+          flexShrink: 0
         },
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
-          href: "/",
-          onClick: e => handleNav(e, "/"),
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
           style: {
+            margin: 0,
+            fontSize: "18px",
+            fontWeight: 700,
+            color: "#1a1a1a",
+            letterSpacing: "-0.2px"
+          },
+          children: title
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+          onClick: handleClose,
+          "aria-label": "Close menu",
+          style: {
+            width: "36px",
+            height: "36px",
+            border: "1.5px solid #333",
+            borderRadius: "4px",
+            background: "none",
+            cursor: "pointer",
             display: "flex",
             alignItems: "center",
-            gap: "10px",
-            textDecoration: "none"
+            justifyContent: "center",
+            color: "#333",
+            flexShrink: 0,
+            transition: "background 0.15s"
           },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            style: {
-              backgroundColor: "#FFCD11",
-              color: "#1A1A1A",
-              fontWeight: 900,
-              fontSize: "20px",
-              padding: "4px 10px",
-              letterSpacing: "-0.5px"
-            },
-            children: "CAT"
-          }), appName !== "CAT" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-            style: {
-              color: "#ffffff",
-              fontWeight: 600,
-              fontSize: "14px"
-            },
-            children: appName
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-          style: {
-            display: "flex",
-            alignItems: "center",
-            gap: "4px"
-          },
-          children: navItems.map(item => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-            style: {
-              position: "relative"
-            },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
-              onMouseEnter: () => item.children && setOpenDropdown(item.label),
-              onMouseLeave: () => setOpenDropdown(null),
-              onClick: e => {
-                if (!item.children) handleNav(e, item.href);
-              },
-              style: {
-                background: "none",
-                border: "none",
-                color: openDropdown === item.label ? "#FFCD11" : "#ffffff",
-                fontWeight: 500,
-                fontSize: "14px",
-                padding: "8px 14px",
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                gap: "4px",
-                transition: "color 0.15s"
-              },
-              children: [item.label, item.children && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
-                width: "12",
-                height: "12",
-                viewBox: "0 0 12 12",
-                fill: "currentColor",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                  d: "M2 4l4 4 4-4",
-                  stroke: "currentColor",
-                  strokeWidth: "1.5",
-                  fill: "none",
-                  strokeLinecap: "round"
-                })
-              })]
-            }), item.children && openDropdown === item.label && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-              onMouseEnter: () => setOpenDropdown(item.label),
-              onMouseLeave: () => setOpenDropdown(null),
-              style: {
-                position: "absolute",
-                top: "100%",
-                left: 0,
-                backgroundColor: "#2D2D2D",
-                minWidth: "200px",
-                boxShadow: "0 8px 24px rgba(0,0,0,0.4)",
-                borderTop: "2px solid #FFCD11"
-              },
-              children: item.children.map(child => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-                href: child.href,
-                onClick: e => handleNav(e, child.href),
-                style: {
-                  display: "block",
-                  padding: "10px 16px",
-                  color: "#ffffff",
-                  textDecoration: "none",
-                  fontSize: "13px",
-                  borderBottom: "1px solid rgba(255,255,255,0.06)",
-                  transition: "background 0.15s, color 0.15s"
-                },
-                onMouseEnter: e => {
-                  e.currentTarget.style.backgroundColor = "#FFCD11";
-                  e.currentTarget.style.color = "#1A1A1A";
-                },
-                onMouseLeave: e => {
-                  e.currentTarget.style.backgroundColor = "transparent";
-                  e.currentTarget.style.color = "#ffffff";
-                },
-                children: child.label
-              }, child.label))
-            })]
-          }, item.label))
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          style: {
-            display: "flex",
-            alignItems: "center",
-            gap: "12px"
-          },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-            style: {
-              background: "none",
-              border: "none",
-              color: "#ffffff",
-              cursor: "pointer",
-              padding: "8px"
-            },
-            title: "Search",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
-              width: "18",
-              height: "18",
-              viewBox: "0 0 24 24",
-              fill: "none",
-              stroke: "currentColor",
-              strokeWidth: "2",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
-                cx: "11",
-                cy: "11",
-                r: "8"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                d: "m21 21-4.35-4.35"
-              })]
+          onMouseEnter: e => e.currentTarget.style.backgroundColor = "#f5f5f5",
+          onMouseLeave: e => e.currentTarget.style.backgroundColor = "transparent",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+            width: "16",
+            height: "16",
+            viewBox: "0 0 24 24",
+            fill: "none",
+            stroke: "currentColor",
+            strokeWidth: "2.5",
+            strokeLinecap: "round",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+              d: "M18 6 6 18M6 6l12 12"
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-            onClick: () => setMobileOpen(!mobileOpen),
-            style: {
-              background: "none",
-              border: "none",
-              color: "#ffffff",
-              cursor: "pointer",
-              padding: "8px",
-              display: "none"
-            },
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
-              width: "22",
-              height: "22",
-              viewBox: "0 0 24 24",
-              fill: "none",
-              stroke: "currentColor",
-              strokeWidth: "2",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-                d: "M3 12h18M3 6h18M3 18h18"
-              })
-            })
-          })]
+          })
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
         style: {
-          height: "3px",
-          backgroundColor: "#FFCD11"
-        }
+          flex: 1,
+          overflowY: "auto"
+        },
+        children: menuItems.map((item, idx) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
+          href: item.url,
+          target: "_blank",
+          rel: "noopener noreferrer",
+          style: {
+            display: "flex",
+            alignItems: "flex-start",
+            gap: "16px",
+            padding: "20px",
+            textDecoration: "none",
+            color: "inherit",
+            borderBottom: idx < menuItems.length - 1 ? "1px solid #e9e9e9" : "none",
+            transition: "background 0.15s"
+          },
+          onMouseEnter: e => e.currentTarget.style.backgroundColor = "#fafafa",
+          onMouseLeave: e => e.currentTarget.style.backgroundColor = "transparent",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            style: {
+              flexShrink: 0,
+              marginTop: "2px"
+            },
+            children: item.icon
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+              style: {
+                fontWeight: 700,
+                fontSize: "15px",
+                color: "#1a1a1a",
+                marginBottom: "3px",
+                lineHeight: 1.3
+              },
+              children: item.title
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+              style: {
+                fontSize: "13px",
+                color: "#555",
+                lineHeight: 1.4,
+                marginBottom: "5px"
+              },
+              children: item.description
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+              style: {
+                fontSize: "13px",
+                color: "#006FD6",
+                textDecoration: "none"
+              },
+              children: item.url.replace(/^https?:\/\//, "")
+            })]
+          })]
+        }, item.id))
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        style: {
+          padding: "16px 20px",
+          borderTop: "1px solid #e5e5e5",
+          flexShrink: 0
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+          onClick: handleClose,
+          style: {
+            padding: "10px 24px",
+            border: "1.5px solid #333",
+            borderRadius: "4px",
+            background: "none",
+            cursor: "pointer",
+            fontSize: "14px",
+            fontWeight: 600,
+            color: "#1a1a1a",
+            transition: "background 0.15s"
+          },
+          onMouseEnter: e => e.currentTarget.style.backgroundColor = "#f5f5f5",
+          onMouseLeave: e => e.currentTarget.style.backgroundColor = "transparent",
+          children: "Close"
+        })
       })]
-    })
+    })]
   });
 }
 
@@ -31091,33 +31246,61 @@ __webpack_require__.r(__webpack_exports__);
  * CAT Global Menu Widget — Embed Entry Point
  *
  * Usage on any HTML page:
- *   <div id="cat-global-menu"></div>
  *   <script src="cat-global-menu.js"></script>
  *   <script>
- *     CATGlobalMenu.mount('#cat-global-menu', {
- *       appName: 'My App',
- *       onNavigate: (href) => console.log('Navigate to', href)
+ *     // Mount once (hidden by default)
+ *     var menu = CATGlobalMenu.mount({
+ *       onClose: () => console.log('closed'),
  *     });
+ *
+ *     // Open from any button/event on the host page
+ *     document.getElementById('my-menu-btn').addEventListener('click', () => menu.open());
  *   </script>
  */
 
 
 
 
-function mount(selector, options = {}) {
-  const container = typeof selector === "string" ? document.querySelector(selector) : selector;
-  if (!container) {
-    console.error(`[CATGlobalMenu] Element not found: ${selector}`);
-    return null;
-  }
+function mount(options = {}) {
+  // Create a dedicated container at the body level so z-index and fixed
+  // positioning are never clipped by a parent with overflow:hidden or transform.
+  const container = document.createElement("div");
+  container.id = "cat-global-menu-root";
+  document.body.appendChild(container);
+  let isOpen = false;
   const root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(container);
-  root.render(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_GlobalMenuWidget__WEBPACK_IMPORTED_MODULE_2__.GlobalMenuWidget, options));
-  return {
-    unmount: () => root.unmount(),
-    update: newOptions => {
-      root.render(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_GlobalMenuWidget__WEBPACK_IMPORTED_MODULE_2__.GlobalMenuWidget, newOptions));
+  function render() {
+    root.render(/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_GlobalMenuWidget__WEBPACK_IMPORTED_MODULE_2__.GlobalMenuWidget, {
+      ...options,
+      isOpen,
+      onClose: () => {
+        isOpen = false;
+        render();
+        options.onClose?.();
+      }
+    }));
+  }
+  render();
+  const instance = {
+    open() {
+      isOpen = true;
+      render();
+    },
+    close() {
+      isOpen = false;
+      render();
+    },
+    toggle() {
+      isOpen = !isOpen;
+      render();
+    },
+    unmount() {
+      root.unmount();
+      container.remove();
     }
   };
+  window.CATGlobalMenu._instance = instance;
+  return instance;
 }
 window.CATGlobalMenu = {
   mount

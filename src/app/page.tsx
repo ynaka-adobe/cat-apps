@@ -17,6 +17,7 @@ export default function Home() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [loginError, setLoginError] = useState("");
   const [activeTab, setActiveTab] = useState<"menu" | "account" | "dealer">("menu");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogin = async (creds: { email: string; password: string }) => {
     await new Promise((r) => setTimeout(r, 800));
@@ -105,19 +106,45 @@ export default function Home() {
           <div>
             <SectionHeader
               title="Global App Menu"
-              description="A top navigation bar with dropdowns. Embed once on every page of your site."
-              embedCode={`<div id="cat-global-menu"></div>
-<script src="/widgets/cat-global-menu.js"></script>
+              description="A slide-in drawer from the right listing all CAT applications. Trigger it from any button on the host page."
+              embedCode={`<script src="/widgets/cat-global-menu.js"></script>
 <script>
-  CATGlobalMenu.mount('#cat-global-menu', {
-    appName: 'My Portal',
-    onNavigate: (href) => { window.location.href = href; }
+  // Mount once — appends its own container to <body>
+  var menu = CATGlobalMenu.mount({
+    onClose: () => console.log('menu closed')
   });
+
+  // Open from any button on the host page
+  document.getElementById('open-cat-menu').addEventListener('click', () => menu.open());
 </script>`}
             />
-            <div style={{ marginTop: "16px" }}>
-              <GlobalMenuWidget appName="My Portal" onNavigate={(href) => alert(`Navigate → ${href}`)} />
+            <div style={{ marginTop: "20px", display: "flex", alignItems: "center", gap: "16px" }}>
+              <button
+                onClick={() => setMenuOpen(true)}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  padding: "10px 20px",
+                  backgroundColor: "#FFCD11",
+                  color: "#1A1A1A",
+                  border: "none",
+                  borderRadius: "4px",
+                  fontWeight: 700,
+                  fontSize: "14px",
+                  cursor: "pointer",
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                  <path d="M3 12h18M3 6h18M3 18h18" />
+                </svg>
+                Open Cat Applications Menu
+              </button>
+              <span style={{ fontSize: "13px", color: "#9CA3AF" }}>
+                (or press Escape to close once opened)
+              </span>
             </div>
+            <GlobalMenuWidget isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
           </div>
         )}
 

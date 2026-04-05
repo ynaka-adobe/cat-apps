@@ -38,16 +38,18 @@
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════════════════
-       CAT GLOBAL MENU — mounted into #cat-global-menu
-       This replaces wherever you normally put your nav
-  ═══════════════════════════════════════════════════ -->
-  <div id="cat-global-menu"></div>
+  <!-- The Global Menu mounts itself into <body> — no placeholder div needed -->
 
   <!-- HOST PAGE HERO (completely unrelated to the widgets) -->
   <div class="host-hero">
     <h1>Welcome to My Construction Site</h1>
     <p>Your one-stop resource for heavy equipment and project management.</p>
+    <button
+      id="open-cat-menu"
+      style="margin-top:20px;padding:10px 22px;background:#FFCD11;color:#1A1A1A;border:none;border-radius:4px;font-weight:700;font-size:14px;cursor:pointer;font-family:Arial,sans-serif;"
+    >
+      ☰ &nbsp;Cat Applications
+    </button>
   </div>
 
   <div class="host-content">
@@ -87,13 +89,14 @@
 
   <script>
     // ── 1. Global Menu ──────────────────────────────────
-    CATGlobalMenu.mount('#cat-global-menu', {
-      appName: 'My Construction Portal',
-      onNavigate: function(href) {
-        // In a real SPA you'd push to your router; for plain HTML just navigate
-        console.log('Navigate to:', href);
-        // window.location.href = href;
-      }
+    // Mount once — it appends its own container to <body>
+    var catMenu = CATGlobalMenu.mount({
+      onClose: function() { console.log('Cat menu closed'); }
+    });
+
+    // Wire up the trigger button on this host page
+    document.getElementById('open-cat-menu').addEventListener('click', function() {
+      catMenu.open();
     });
 
     // ── 2. Account Widget ───────────────────────────────
