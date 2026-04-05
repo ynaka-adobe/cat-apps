@@ -9,11 +9,84 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: Georgia, serif; background: #f0ebe3; color: #222; }
 
+    /* ── Top nav bar — the host page's own header ── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #1a1a1a;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      height: 56px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .site-nav__logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .site-nav__wordmark {
+      background: #FFCD11;
+      color: #1a1a1a;
+      font-family: Arial, sans-serif;
+      font-weight: 900;
+      font-size: 18px;
+      padding: 2px 8px;
+      letter-spacing: -0.5px;
+    }
+    .site-nav__sitename {
+      color: #fff;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .site-nav__links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .site-nav__link {
+      color: #ccc;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 3px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .site-nav__link:hover { color: #fff; background: rgba(255,255,255,0.08); }
+    .site-nav__actions { display: flex; align-items: center; gap: 12px; }
+
+    /* "Cat Applications" grid button */
+    .cat-apps-btn {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 14px;
+      background: none;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      border-radius: 4px;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .cat-apps-btn:hover {
+      border-color: #FFCD11;
+      color: #FFCD11;
+    }
+    .cat-apps-btn svg { flex-shrink: 0; }
+
     /* ── The host page's own styles ── */
     .host-hero {
       background: linear-gradient(135deg, #1a3a2a 0%, #2d5a3d 100%);
       color: white;
-      padding: 60px 40px;
+      padding: 72px 40px;
       text-align: center;
     }
     .host-hero h1 { font-size: 2.4rem; margin-bottom: 12px; }
@@ -40,16 +113,43 @@
 
   <!-- The Global Menu mounts itself into <body> — no placeholder div needed -->
 
-  <!-- HOST PAGE HERO (completely unrelated to the widgets) -->
+  <!-- ── HOST SITE NAV with the "Cat Applications" trigger ── -->
+  <nav class="site-nav">
+    <a href="#" class="site-nav__logo">
+      <span class="site-nav__wordmark">CAT</span>
+      <span class="site-nav__sitename">My Construction Portal</span>
+    </a>
+
+    <div class="site-nav__links">
+      <a href="#" class="site-nav__link">Products</a>
+      <a href="#" class="site-nav__link">Services</a>
+      <a href="#" class="site-nav__link">Support</a>
+    </div>
+
+    <div class="site-nav__actions">
+      <!-- This button triggers the Global Menu drawer widget -->
+      <button id="open-cat-menu" class="cat-apps-btn">
+        <!-- 3×3 grid icon -->
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="currentColor">
+          <rect x="0" y="0" width="4" height="4" rx="0.5"/>
+          <rect x="5.5" y="0" width="4" height="4" rx="0.5"/>
+          <rect x="11" y="0" width="4" height="4" rx="0.5"/>
+          <rect x="0" y="5.5" width="4" height="4" rx="0.5"/>
+          <rect x="5.5" y="5.5" width="4" height="4" rx="0.5"/>
+          <rect x="11" y="5.5" width="4" height="4" rx="0.5"/>
+          <rect x="0" y="11" width="4" height="4" rx="0.5"/>
+          <rect x="5.5" y="11" width="4" height="4" rx="0.5"/>
+          <rect x="11" y="11" width="4" height="4" rx="0.5"/>
+        </svg>
+        Cat Applications
+      </button>
+    </div>
+  </nav>
+
+  <!-- HOST PAGE HERO -->
   <div class="host-hero">
     <h1>Welcome to My Construction Site</h1>
     <p>Your one-stop resource for heavy equipment and project management.</p>
-    <button
-      id="open-cat-menu"
-      style="margin-top:20px;padding:10px 22px;background:#FFCD11;color:#1A1A1A;border:none;border-radius:4px;font-weight:700;font-size:14px;cursor:pointer;font-family:Arial,sans-serif;"
-    >
-      ☰ &nbsp;Cat Applications
-    </button>
   </div>
 
   <div class="host-content">
