@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-cat-yellow: #FFCD11;
+  --color-cat-black: #1A1A1A;
+  --color-cat-dark: #2D2D2D;
+  --color-cat-gray: #6B6B6B;
+  --color-cat-light: #F5F5F5;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Widget host reset — prevents host page styles from leaking */
+.cat-widget-root * {
+  box-sizing: border-box;
+}

@@ -1,0 +1,38 @@
+{
+  "name": "cat-apps",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && npm run build:widgets",
+    "start": "next start",
+    "lint": "eslint",
+    "build:widgets": "webpack --config webpack.widgets.js",
+    "build:widgets:prod": "NODE_ENV=production webpack --config webpack.widgets.js",
+    "watch:widgets": "webpack --config webpack.widgets.js --watch"
+  },
+  "dependencies": {
+    "next": "16.2.2",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.2",
+    "@babel/preset-react": "^7.28.5",
+    "@babel/preset-typescript": "^7.28.5",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "babel-loader": "^10.1.1",
+    "css-loader": "^7.1.4",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.2",
+    "style-loader": "^4.0.0",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "webpack": "^5.105.4",
+    "webpack-cli": "^7.0.2"
+  }
+}

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Website — CAT Widget Embed Demo</title>
+  <style>
+    /* This is a completely separate HTML page (no Next.js, no React) */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Georgia, serif; background: #f0ebe3; color: #222; }
+
+    /* ── The host page's own styles ── */
+    .host-hero {
+      background: linear-gradient(135deg, #1a3a2a 0%, #2d5a3d 100%);
+      color: white;
+      padding: 60px 40px;
+      text-align: center;
+    }
+    .host-hero h1 { font-size: 2.4rem; margin-bottom: 12px; }
+    .host-hero p { font-size: 1.1rem; opacity: 0.8; }
+    .host-content { max-width: 1100px; margin: 0 auto; padding: 40px; }
+    .host-section { margin-bottom: 48px; }
+    .host-section h2 { font-size: 1.4rem; color: #1a3a2a; margin-bottom: 8px; }
+    .host-section p { color: #555; line-height: 1.6; margin-bottom: 16px; }
+    .badge {
+      display: inline-block;
+      background: #e8f5e9;
+      color: #1a3a2a;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      font-family: monospace;
+      margin-bottom: 10px;
+    }
+    .row { display: flex; gap: 32px; flex-wrap: wrap; align-items: flex-start; }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════
+       CAT GLOBAL MENU — mounted into #cat-global-menu
+       This replaces wherever you normally put your nav
+  ═══════════════════════════════════════════════════ -->
+  <div id="cat-global-menu"></div>
+
+  <!-- HOST PAGE HERO (completely unrelated to the widgets) -->
+  <div class="host-hero">
+    <h1>Welcome to My Construction Site</h1>
+    <p>Your one-stop resource for heavy equipment and project management.</p>
+  </div>
+
+  <div class="host-content">
+
+    <div class="host-section">
+      <span class="badge">widget: cat-account.js</span>
+      <h2>My Account</h2>
+      <p>The account widget below is embedded from the CAT widget suite. It manages login state independently — try signing in with any email and any password (except "wrong").</p>
+
+      <!-- CAT ACCOUNT WIDGET -->
+      <div id="cat-account"></div>
+    </div>
+
+    <div class="host-section">
+      <span class="badge">widget: cat-dealer-locator.js</span>
+      <h2>Find Your Nearest CAT Dealer</h2>
+      <p>Search for dealers near you. Try searching "Birmingham", "Columbia", or "Wichita" to see results from the demo data set.</p>
+
+      <!-- CAT DEALER LOCATOR WIDGET -->
+      <div id="cat-dealer-locator"></div>
+    </div>
+
+    <div class="host-section">
+      <h2>The Rest of Your Page</h2>
+      <p>Everything else on this page is plain HTML and CSS — no React, no Next.js. The widgets above are loaded as self-contained JS bundles that bring their own React runtime.</p>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       WIDGET BUNDLES — load from /widgets/ (Next.js public folder)
+       In production these would be served from your CDN.
+  ═══════════════════════════════════════════════════ -->
+  <script src="/widgets/cat-global-menu.js"></script>
+  <script src="/widgets/cat-account.js"></script>
+  <script src="/widgets/cat-dealer-locator.js"></script>
+
+  <script>
+    // ── 1. Global Menu ──────────────────────────────────
+    CATGlobalMenu.mount('#cat-global-menu', {
+      appName: 'My Construction Portal',
+      onNavigate: function(href) {
+        // In a real SPA you'd push to your router; for plain HTML just navigate
+        console.log('Navigate to:', href);
+        // window.location.href = href;
+      }
+    });
+
+    // ── 2. Account Widget ───────────────────────────────
+    var currentUser = null; // Start logged out
+
+    var accountWidget = CATAccount.mount('#cat-account', {
+      user: currentUser,
+      onLogin: async function(creds) {
+        // Simulate an API call
+        await new Promise(function(r) { setTimeout(r, 800); });
+        if (creds.password === 'wrong') {
+          // Re-mount with error
+          accountWidget.update({
+            user: null,
+            loginError: 'Invalid credentials. Try any other password.',
+            onLogin: arguments.callee
+          });
+          return;
+        }
+        currentUser = {
+          id: 'u1',
+          name: 'Alex Morgan',
+          email: creds.email,
+          company: 'My Construction Co.',
+          role: 'Fleet Manager'
+        };
+        accountWidget.update({
+          user: currentUser,
+          onLogout: handleLogout,
+          onProfileClick: function() { alert('Opening profile page…'); },
+          onOrdersClick: function() { alert('Opening orders page…'); }
+        });
+      },
+      onLogout: function() { handleLogout(); }
+    });
+
+    function handleLogout() {
+      currentUser = null;
+      accountWidget.update({
+        user: null,
+        onLogin: accountWidget.options && accountWidget.options.onLogin
+      });
+      // Easiest way: just re-mount
+      accountWidget = CATAccount.mount('#cat-account', {
+        user: null,
+        onLogin: accountWidget._options ? accountWidget._options.onLogin : undefined
+      });
+      location.reload(); // Simple demo: just reload to reset state
+    }
+
+    // ── 3. Dealer Locator ───────────────────────────────
+    CATDealerLocator.mount('#cat-dealer-locator', {
+      // Pass your own search function to hit a real API:
+      // onSearch: async function(query) {
+      //   const res = await fetch('/api/dealers?q=' + encodeURIComponent(query));
+      //   return res.json();
+      // },
+      onDealerSelect: function(dealer) {
+        console.log('Selected dealer:', dealer);
+        alert('Selected: ' + dealer.name + '\n' + dealer.address + ', ' + dealer.city + ', ' + dealer.state);
+      }
+    });
+  </script>
+
+</body>
+</html>
