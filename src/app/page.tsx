@@ -5,6 +5,7 @@ import { GlobalMenuWidget } from "@/widgets/global-menu/GlobalMenuWidget";
 import { AccountWidget, AccountUser } from "@/widgets/account/AccountWidget";
 import { DealerLocatorWidget } from "@/widgets/dealer-locator/DealerLocatorWidget";
 import { SelectStoreWidget } from "@/widgets/select-store/SelectStoreWidget";
+import { OrderHistoryWidget } from "@/widgets/order-history/OrderHistoryWidget";
 
 const DEMO_USER: AccountUser = {
   id: "u1",
@@ -17,7 +18,7 @@ const DEMO_USER: AccountUser = {
 export default function Home() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [loginError, setLoginError] = useState("");
-  const [activeTab, setActiveTab] = useState<"menu" | "account" | "dealer" | "store">("menu");
+  const [activeTab, setActiveTab] = useState<"menu" | "account" | "dealer" | "store" | "orders">("menu");
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogin = async (creds: { email: string; password: string }) => {
@@ -35,6 +36,7 @@ export default function Home() {
     { id: "account" as const, label: "Account Widget" },
     { id: "dealer" as const, label: "Dealer Locator" },
     { id: "store" as const, label: "Select Store" },
+    { id: "orders" as const, label: "Order History" },
   ];
 
   return (
@@ -213,6 +215,30 @@ export default function Home() {
             <div style={{ marginTop: "20px" }}>
               <DealerLocatorWidget
                 onDealerSelect={(d) => console.log("Selected dealer:", d)}
+              />
+            </div>
+          </div>
+        )}
+
+        {activeTab === "orders" && (
+          <div>
+            <SectionHeader
+              title="Order History"
+              description="Displays a user's past Cat parts and equipment orders with status, line items, tracking, and reorder actions."
+              embedCode={`<div id="cat-order-history"></div>
+<script src="/widgets/cat-order-history.js"></script>
+<script>
+  CATOrderHistory.mount('#cat-order-history', {
+    orders: myOrders,
+    onViewOrder: (order) => window.location.href = '/orders/' + order.id,
+    onReorder:   (order) => console.log('Reorder', order)
+  });
+</script>`}
+            />
+            <div style={{ marginTop: "20px" }}>
+              <OrderHistoryWidget
+                onViewOrder={(o) => alert(`View order: ${o.orderNumber}`)}
+                onReorder={(o) => alert(`Reorder: ${o.orderNumber}`)}
               />
             </div>
           </div>
