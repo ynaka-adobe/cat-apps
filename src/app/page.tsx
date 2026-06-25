@@ -6,6 +6,8 @@ import { AccountWidget, AccountUser } from "@/widgets/account/AccountWidget";
 import { DealerLocatorWidget } from "@/widgets/dealer-locator/DealerLocatorWidget";
 import { SelectStoreWidget } from "@/widgets/select-store/SelectStoreWidget";
 import { OrderHistoryWidget } from "@/widgets/order-history/OrderHistoryWidget";
+import { SISWidget } from "@/widgets/sis/SISWidget";
+import { AddEquipmentWidget } from "@/widgets/add-equipment/AddEquipmentWidget";
 
 const DEMO_USER: AccountUser = {
   id: "u1",
@@ -18,7 +20,7 @@ const DEMO_USER: AccountUser = {
 export default function Home() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [loginError, setLoginError] = useState("");
-  const [activeTab, setActiveTab] = useState<"menu" | "account" | "dealer" | "store" | "orders">("menu");
+  const [activeTab, setActiveTab] = useState<"menu" | "account" | "dealer" | "store" | "orders" | "sis" | "equipment">("menu");
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogin = async (creds: { email: string; password: string }) => {
@@ -37,6 +39,8 @@ export default function Home() {
     { id: "dealer" as const, label: "Dealer Locator" },
     { id: "store" as const, label: "Select Store" },
     { id: "orders" as const, label: "Order History" },
+    { id: "sis" as const, label: "SIS" },
+    { id: "equipment" as const, label: "Add Equipment" },
   ];
 
   return (
@@ -239,6 +243,56 @@ export default function Home() {
               <OrderHistoryWidget
                 onViewOrder={(o) => alert(`View order: ${o.orderNumber}`)}
                 onReorder={(o) => alert(`Reorder: ${o.orderNumber}`)}
+              />
+            </div>
+          </div>
+        )}
+
+        {activeTab === "sis" && (
+          <div>
+            <SectionHeader
+              title="Service Information System (SIS)"
+              description="Promotes SIS features and prompts unauthenticated users to sign in or register before accessing part and service information."
+              embedCode={`<div id="cat-sis"></div>
+<script src="/widgets/cat-sis.js"></script>
+<script>
+  CATSIS.mount('#cat-sis', {
+    onSignIn:   () => window.location.href = '/sign-in',
+    onRegister: () => window.location.href = '/register',
+    onClose:    () => document.getElementById('cat-sis').style.display = 'none'
+  });
+</script>`}
+            />
+            <div style={{ marginTop: "20px" }}>
+              <SISWidget
+                onSignIn={() => alert("Sign in clicked")}
+                onRegister={() => alert("Register clicked")}
+                onClose={() => alert("Close clicked")}
+              />
+            </div>
+          </div>
+        )}
+
+        {activeTab === "equipment" && (
+          <div>
+            <SectionHeader
+              title="Add Equipment"
+              description="Lets users add Cat equipment by serial number or model to personalize parts search results."
+              embedCode={`<div id="cat-add-equipment"></div>
+<script src="/widgets/cat-add-equipment.js"></script>
+<script>
+  CATAddEquipment.mount('#cat-add-equipment', {
+    onAdd:    (eq) => console.log('Equipment added', eq),
+    onCancel: () => document.getElementById('cat-add-equipment').style.display = 'none',
+    onClose:  () => document.getElementById('cat-add-equipment').style.display = 'none'
+  });
+</script>`}
+            />
+            <div style={{ marginTop: "20px" }}>
+              <AddEquipmentWidget
+                onAdd={(eq) => alert(`Added: ${eq.serialNumber ?? eq.model}${eq.nickname ? ` (${eq.nickname})` : ""}`)}
+                onCancel={() => alert("Cancelled")}
+                onClose={() => alert("Close clicked")}
               />
             </div>
           </div>

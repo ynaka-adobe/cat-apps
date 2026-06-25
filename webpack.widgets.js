@@ -12,6 +12,8 @@ module.exports = {
     "cat-dealer-locator": "./src/widgets/dealer-locator/embed.ts",
     "cat-select-store": "./src/widgets/select-store/embed.ts",
     "cat-order-history": "./src/widgets/order-history/embed.ts",
+    "cat-sis": "./src/widgets/sis/embed.ts",
+    "cat-add-equipment": "./src/widgets/add-equipment/embed.ts",
   },
 
   output: {
