@@ -25,7 +25,10 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [headerStoreOpen, setHeaderStoreOpen] = useState(false);
   const [headerAddEquipOpen, setHeaderAddEquipOpen] = useState(false);
+  const [headerAccountOpen, setHeaderAccountOpen] = useState(false);
   const [headerStoreName, setHeaderStoreName] = useState<string | undefined>(undefined);
+  const [headerLoggedIn, setHeaderLoggedIn] = useState(false);
+  const [headerUserName, setHeaderUserName] = useState<string | undefined>(undefined);
 
   const handleLogin = async (creds: { email: string; password: string }) => {
     await new Promise((r) => setTimeout(r, 800));
@@ -329,6 +332,12 @@ export default function Home() {
     onAdd: (eq) => console.log('Equipment added', eq),
   });
 
+  var account = CATAccount.mount(document.createElement('div'), {
+    user: null,
+    onLogin: async (creds) => { /* call your auth API, then update header */ },
+    onLogout: () => header.update({ isSignedIn: false, userName: undefined }),
+  });
+
   var globalMenu = CATGlobalMenu.mount();
 
   // Wire header callbacks to the other widgets
@@ -336,7 +345,7 @@ export default function Home() {
     cartCount: 0,
     onSelectStore:  () => selectStore.open(),
     onAddEquipment: () => addEquip.open(),
-    onSignIn:       () => window.location.href = '/en/catcorp/sign-in',
+    onSignIn:       () => account.open(),
     onCart:         () => window.location.href = '/en/catcorp/cart',
     onWaffleMenu:   () => globalMenu.toggle(),
     onSearch:       (q) => window.location.href = '/en/catcorp/search?q=' + encodeURIComponent(q),
@@ -347,9 +356,12 @@ export default function Home() {
               <HeaderWidget
                 cartCount={2}
                 storeName={headerStoreName}
+                isSignedIn={headerLoggedIn}
+                userName={headerUserName}
                 onSelectStore={() => setHeaderStoreOpen(true)}
                 onAddEquipment={() => setHeaderAddEquipOpen(true)}
-                onSignIn={() => alert("Sign In → would open AccountWidget or redirect")}
+                onSignIn={() => setHeaderAccountOpen(true)}
+                onSignOut={() => { setHeaderLoggedIn(false); setHeaderUserName(undefined); }}
                 onCart={() => alert("Cart clicked")}
                 onWaffleMenu={() => setMenuOpen(true)}
                 onSearch={(q) => alert(`Search: ${q}`)}
@@ -372,6 +384,28 @@ export default function Home() {
               </div>
             )}
 
+            {/* AccountWidget triggered from Sign In */}
+            {headerAccountOpen && (
+              <div style={{ marginTop: "12px" }}>
+                <p style={{ fontSize: "12px", fontWeight: 600, color: "#6B6B6B", marginBottom: "8px" }}>
+                  ACCOUNT WIDGET (opened from header Sign In)
+                </p>
+                <AccountWidget
+                  user={headerLoggedIn ? { id: "u1", name: headerUserName!, email: "", company: "", role: "" } : null}
+                  onLogin={async (creds) => {
+                    await new Promise((r) => setTimeout(r, 800));
+                    if (creds.password === "wrong") return;
+                    const name = creds.email.split("@")[0];
+                    setHeaderLoggedIn(true);
+                    setHeaderUserName(name);
+                    setHeaderAccountOpen(false);
+                  }}
+                  onLogout={() => { setHeaderLoggedIn(false); setHeaderUserName(undefined); setHeaderAccountOpen(false); }}
+                  onProfileClick={() => setHeaderAccountOpen(false)}
+                />
+              </div>
+            )}
+
             {/* AddEquipment triggered from header */}
             {headerAddEquipOpen && (
               <div style={{ marginTop: "12px" }}>
@@ -390,7 +424,7 @@ export default function Home() {
             <GlobalMenuWidget isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
 
             <p style={{ marginTop: "12px", fontSize: "13px", color: "#6B6B6B" }}>
-              Click <strong>Add Equipment</strong>, <strong>Select Store</strong>, or the <strong>waffle icon</strong> to open the linked widgets. Resize below 900 px for the mobile layout.
+              Click <strong>Sign In</strong>, <strong>Add Equipment</strong>, <strong>Select Store</strong>, or the <strong>waffle icon</strong> to open the linked widgets. Resize below 900 px for the mobile layout.
             </p>
           </div>
         )}
