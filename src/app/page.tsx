@@ -23,6 +23,9 @@ export default function Home() {
   const [loginError, setLoginError] = useState("");
   const [activeTab, setActiveTab] = useState<"menu" | "account" | "dealer" | "store" | "orders" | "sis" | "equipment" | "header">("menu");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [headerStoreOpen, setHeaderStoreOpen] = useState(false);
+  const [headerAddEquipOpen, setHeaderAddEquipOpen] = useState(false);
+  const [headerStoreName, setHeaderStoreName] = useState<string | undefined>(undefined);
 
   const handleLogin = async (creds: { email: string; password: string }) => {
     await new Promise((r) => setTimeout(r, 800));
@@ -304,31 +307,90 @@ export default function Home() {
           <div>
             <SectionHeader
               title="Header"
-              description="Full-site navigation header with Shop mega-menu, store selector, sign-in, and cart. Fully responsive — collapses to a hamburger menu on mobile."
-              embedCode={`<header id="cat-header" style="position: sticky; top: 0; z-index: 100;"></header>
+              description="Two-row navigation header matching the AEM site — utility bar (logo, Add Equipment, search, store/sign-in/cart/waffle) plus nav bar (Shop mega-menu, SIS, Parts Diagram / My Equipment, Order History, Help Center). Fully responsive."
+              embedCode={`<!-- Load all widgets the header triggers -->
 <script src="/widgets/cat-header.js"></script>
+<script src="/widgets/cat-select-store.js"></script>
+<script src="/widgets/cat-add-equipment.js"></script>
+<script src="/widgets/cat-global-menu.js"></script>
+
+<header id="cat-header" style="position: sticky; top: 0; z-index: 100;"></header>
+
 <script>
-  CATHeader.mount('#cat-header', {
-    storeName: 'Los Angeles Branch',   // optional — shows "Select Store" if omitted
-    cartCount: 3,
-    isSignedIn: false,
-    onSelectStore: () => { /* open store picker */ },
-    onSignIn:      () => { window.location.href = '/sign-in'; },
-    onCart:        () => { window.location.href = '/cart'; },
+  // Mount dependent widgets first
+  var selectStore = CATSelectStore.mount(document.createElement('div'), {
+    onStoreSelect: (store) => {
+      header.update({ storeName: store.locationName });
+      selectStore.unmount();
+    },
+  });
+
+  var addEquip = CATAddEquipment.mount(document.createElement('div'), {
+    onAdd: (eq) => console.log('Equipment added', eq),
+  });
+
+  var globalMenu = CATGlobalMenu.mount();
+
+  // Wire header callbacks to the other widgets
+  var header = CATHeader.mount('#cat-header', {
+    cartCount: 0,
+    onSelectStore:  () => selectStore.open(),
+    onAddEquipment: () => addEquip.open(),
+    onSignIn:       () => window.location.href = '/en/catcorp/sign-in',
+    onCart:         () => window.location.href = '/en/catcorp/cart',
+    onWaffleMenu:   () => globalMenu.toggle(),
+    onSearch:       (q) => window.location.href = '/en/catcorp/search?q=' + encodeURIComponent(q),
   });
 </script>`}
             />
             <div style={{ marginTop: "20px", borderRadius: "8px", overflow: "hidden", border: "1px solid #E5E5E5" }}>
               <HeaderWidget
                 cartCount={2}
-                storeName="Los Angeles Branch"
-                onSelectStore={() => alert("Select Store clicked")}
-                onSignIn={() => alert("Sign In clicked")}
+                storeName={headerStoreName}
+                onSelectStore={() => setHeaderStoreOpen(true)}
+                onAddEquipment={() => setHeaderAddEquipOpen(true)}
+                onSignIn={() => alert("Sign In → would open AccountWidget or redirect")}
                 onCart={() => alert("Cart clicked")}
+                onWaffleMenu={() => setMenuOpen(true)}
+                onSearch={(q) => alert(`Search: ${q}`)}
               />
             </div>
+
+            {/* SelectStore triggered from header */}
+            {headerStoreOpen && (
+              <div style={{ marginTop: "12px" }}>
+                <p style={{ fontSize: "12px", fontWeight: 600, color: "#6B6B6B", marginBottom: "8px" }}>
+                  SELECT STORE WIDGET (opened from header)
+                </p>
+                <SelectStoreWidget
+                  onStoreSelect={(s) => {
+                    setHeaderStoreName(s.locationName);
+                    setHeaderStoreOpen(false);
+                  }}
+                  onClose={() => setHeaderStoreOpen(false)}
+                />
+              </div>
+            )}
+
+            {/* AddEquipment triggered from header */}
+            {headerAddEquipOpen && (
+              <div style={{ marginTop: "12px" }}>
+                <p style={{ fontSize: "12px", fontWeight: 600, color: "#6B6B6B", marginBottom: "8px" }}>
+                  ADD EQUIPMENT WIDGET (opened from header)
+                </p>
+                <AddEquipmentWidget
+                  onAdd={(eq) => { alert(`Added: ${eq.serialNumber ?? eq.model}`); setHeaderAddEquipOpen(false); }}
+                  onCancel={() => setHeaderAddEquipOpen(false)}
+                  onClose={() => setHeaderAddEquipOpen(false)}
+                />
+              </div>
+            )}
+
+            {/* GlobalMenu triggered from waffle icon */}
+            <GlobalMenuWidget isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
+
             <p style={{ marginTop: "12px", fontSize: "13px", color: "#6B6B6B" }}>
-              Hover <strong>Shop</strong> to open the mega-menu. Resize the window below 900 px to see the mobile layout.
+              Click <strong>Add Equipment</strong>, <strong>Select Store</strong>, or the <strong>waffle icon</strong> to open the linked widgets. Resize below 900 px for the mobile layout.
             </p>
           </div>
         )}

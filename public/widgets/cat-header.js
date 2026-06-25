@@ -28,13 +28,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const C = {
-  black: "#1A1A1A",
+  topBar: "#0D0D0D",
+  navBar: "#1A1A1A",
+  divider: "#2D2D2D",
   yellow: "#FFCD11",
   white: "#FFFFFF",
   gray: "#888888",
-  border: "#2D2D2D"
+  lightGray: "#F5F5F5"
 };
 const AEM = "https://main--parts-cat--ynaka-adobe.aem.live";
+// ── Default data ─────────────────────────────────────────────────────────────
+
 const DEFAULT_LOGO_SRC = `${AEM}/media_1b96fb15b98e8957ce0c6c952dabbeac57922c2b7.png?width=232&format=png&optimize=medium`;
 const DEFAULT_CATEGORIES = [{
   label: "Attachments",
@@ -97,20 +101,148 @@ const DEFAULT_CATEGORIES = [{
   href: "/en/catcorp/category/workshop-supplies",
   imageUrl: `${AEM}/en/media_11875b2fedc2f43e478c96da544af2376450f2407.png?width=96&format=png&optimize=medium`
 }];
-const DEFAULT_MIDDLE_LINKS = [{
+const DEFAULT_LEFT_LINKS = [{
+  label: "SIS",
+  href: "/en/catcorp/sis"
+}, {
+  label: "Parts Diagram",
+  href: "/en/catcorp/parts-diagram"
+}];
+const DEFAULT_RIGHT_LINKS = [{
   label: "My Equipment",
-  href: "/en/catcorp/my-equipment"
+  href: "/en/catcorp/my-equipment",
+  icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+    width: "14",
+    height: "14",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "1.8",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
+      x: "2",
+      y: "7",
+      width: "20",
+      height: "14",
+      rx: "2"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+      d: "M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("line", {
+      x1: "12",
+      y1: "12",
+      x2: "12",
+      y2: "16"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("line", {
+      x1: "10",
+      y1: "14",
+      x2: "14",
+      y2: "14"
+    })]
+  })
 }, {
   label: "Order History",
-  href: "/en/catcorp/orders"
+  href: "/en/catcorp/orders",
+  icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+    width: "14",
+    height: "14",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "1.8",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+      cx: "12",
+      cy: "12",
+      r: "10"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("polyline", {
+      points: "12 6 12 12 16 14"
+    })]
+  })
 }, {
   label: "Help Center",
   href: "https://catcrm.my.site.com/HelpCenter/s?language=en_US&geoloc=US&userstate=Loggedout&eSite=CATCorp",
-  target: "_blank"
+  target: "_blank",
+  icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+    width: "14",
+    height: "14",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "1.8",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+      cx: "12",
+      cy: "12",
+      r: "10"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+      d: "M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("line", {
+      x1: "12",
+      y1: "17",
+      x2: "12.01",
+      y2: "17"
+    })]
+  })
 }];
 
-// ── Icon helpers ──────────────────────────────────────────────────────────────
+// ── SVG Icons ─────────────────────────────────────────────────────────────────
 
+function IconAddEquipment() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+    width: "14",
+    height: "14",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
+      x: "2",
+      y: "7",
+      width: "20",
+      height: "14",
+      rx: "2"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+      d: "M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("line", {
+      x1: "12",
+      y1: "12",
+      x2: "12",
+      y2: "16"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("line", {
+      x1: "10",
+      y1: "14",
+      x2: "14",
+      y2: "14"
+    })]
+  });
+}
+function IconSearch() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+    width: "16",
+    height: "16",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2.5",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+      cx: "11",
+      cy: "11",
+      r: "8"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("line", {
+      x1: "21",
+      y1: "21",
+      x2: "16.65",
+      y2: "16.65"
+    })]
+  });
+}
 function IconLocation() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
     width: "14",
@@ -130,10 +262,29 @@ function IconLocation() {
     })]
   });
 }
+function IconUser() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+    width: "16",
+    height: "16",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "1.8",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+      d: "M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("circle", {
+      cx: "12",
+      cy: "7",
+      r: "4"
+    })]
+  });
+}
 function IconCart() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
-    width: "22",
-    height: "22",
+    width: "18",
+    height: "18",
     viewBox: "0 0 24 24",
     fill: "none",
     stroke: "currentColor",
@@ -153,10 +304,96 @@ function IconCart() {
     })]
   });
 }
+function IconWaffle() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
+    width: "18",
+    height: "18",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    strokeLinecap: "round",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
+      x: "3",
+      y: "3",
+      width: "5",
+      height: "5",
+      rx: "1"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
+      x: "10",
+      y: "3",
+      width: "5",
+      height: "5",
+      rx: "1"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
+      x: "17",
+      y: "3",
+      width: "5",
+      height: "5",
+      rx: "1"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
+      x: "3",
+      y: "10",
+      width: "5",
+      height: "5",
+      rx: "1"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
+      x: "10",
+      y: "10",
+      width: "5",
+      height: "5",
+      rx: "1"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
+      x: "17",
+      y: "10",
+      width: "5",
+      height: "5",
+      rx: "1"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
+      x: "3",
+      y: "17",
+      width: "5",
+      height: "5",
+      rx: "1"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
+      x: "10",
+      y: "17",
+      width: "5",
+      height: "5",
+      rx: "1"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("rect", {
+      x: "17",
+      y: "17",
+      width: "5",
+      height: "5",
+      rx: "1"
+    })]
+  });
+}
+function IconChevron({
+  open
+}) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
+    width: "11",
+    height: "11",
+    viewBox: "0 0 12 12",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    strokeLinecap: "round",
+    style: {
+      transform: open ? "rotate(180deg)" : "rotate(0deg)",
+      transition: "transform 0.2s"
+    },
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
+      d: "M2 4l4 4 4-4"
+    })
+  });
+}
 function IconHamburger() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("svg", {
-    width: "22",
-    height: "22",
+    width: "20",
+    height: "20",
     viewBox: "0 0 24 24",
     fill: "none",
     stroke: "currentColor",
@@ -182,8 +419,8 @@ function IconHamburger() {
 }
 function IconClose() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
-    width: "22",
-    height: "22",
+    width: "20",
+    height: "20",
     viewBox: "0 0 24 24",
     fill: "none",
     stroke: "currentColor",
@@ -194,26 +431,25 @@ function IconClose() {
     })
   });
 }
-function IconChevron({
-  open
-}) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("svg", {
-    width: "12",
-    height: "12",
-    viewBox: "0 0 12 12",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: "2",
-    strokeLinecap: "round",
-    style: {
-      transform: open ? "rotate(180deg)" : "rotate(0deg)",
-      transition: "transform 0.2s"
-    },
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("path", {
-      d: "M2 4l4 4 4-4"
-    })
-  });
-}
+
+// ── Shared button style helper ────────────────────────────────────────────────
+
+const ghostBtn = extra => ({
+  background: "none",
+  border: "none",
+  color: C.white,
+  cursor: "pointer",
+  display: "inline-flex",
+  alignItems: "center",
+  gap: "5px",
+  padding: "6px 8px",
+  borderRadius: "4px",
+  fontSize: "13px",
+  fontWeight: 500,
+  whiteSpace: "nowrap",
+  transition: "background 0.15s",
+  ...extra
+});
 
 // ── Component ─────────────────────────────────────────────────────────────────
 
@@ -221,23 +457,29 @@ function HeaderWidget({
   logoSrc = DEFAULT_LOGO_SRC,
   logoAlt = "Caterpillar",
   logoHref = "/en/catcorp",
-  seeAllCategoriesHref = "/en/catcorp/shop-all-categories",
-  categories = DEFAULT_CATEGORIES,
-  middleLinks = DEFAULT_MIDDLE_LINKS,
+  onAddEquipment,
+  searchPlaceholder = "Search for part number or name",
+  onSearch,
   storeName,
+  onSelectStore,
   isSignedIn = false,
   userName,
-  cartCount = 0,
-  onSelectStore,
   onSignIn,
   onSignOut,
-  onCart
+  cartCount = 0,
+  onCart,
+  onWaffleMenu,
+  seeAllCategoriesHref = "/en/catcorp/shop-all-categories",
+  categories = DEFAULT_CATEGORIES,
+  leftLinks = DEFAULT_LEFT_LINKS,
+  rightLinks = DEFAULT_RIGHT_LINKS
 }) {
   const [shopOpen, setShopOpen] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [mobileOpen, setMobileOpen] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [isMobile, setIsMobile] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const [dropdownTop, setDropdownTop] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(64);
-  const headerRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const [searchQuery, setSearchQuery] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
+  const [dropdownTop, setDropdownTop] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0);
+  const wrapperRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
 
   // Responsive breakpoint
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
@@ -255,7 +497,7 @@ function HeaderWidget({
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (!shopOpen) return;
     const handler = e => {
-      if (headerRef.current && !headerRef.current.contains(e.target)) {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
         setShopOpen(false);
       }
     };
@@ -275,46 +517,35 @@ function HeaderWidget({
     return () => window.removeEventListener("keydown", handler);
   }, []);
 
-  // Body scroll lock for mobile menu
+  // Body scroll lock for mobile
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
   }, [mobileOpen]);
-  const openShop = () => {
-    if (headerRef.current) {
-      setDropdownTop(headerRef.current.getBoundingClientRect().bottom);
+  const handleShopClick = () => {
+    if (wrapperRef.current) {
+      setDropdownTop(wrapperRef.current.getBoundingClientRect().bottom);
     }
     setShopOpen(o => !o);
   };
-  const navLinkStyle = {
-    color: C.white,
-    textDecoration: "none",
-    fontSize: "14px",
-    fontWeight: 500,
-    padding: "8px 12px",
-    borderRadius: "4px",
-    display: "inline-flex",
-    alignItems: "center",
-    cursor: "pointer",
-    background: "none",
-    border: "none",
-    transition: "background 0.15s",
-    whiteSpace: "nowrap"
+  const handleSearch = e => {
+    e.preventDefault();
+    onSearch?.(searchQuery);
   };
   const cartBadge = cartCount > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
     style: {
       position: "absolute",
-      top: "4px",
-      right: "4px",
+      top: "1px",
+      right: "1px",
       backgroundColor: C.yellow,
-      color: C.black,
+      color: "#000",
       fontSize: "10px",
       fontWeight: 700,
       borderRadius: "50%",
-      width: "16px",
-      height: "16px",
+      width: "15px",
+      height: "15px",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -323,484 +554,686 @@ function HeaderWidget({
     },
     children: cartCount > 99 ? "99+" : cartCount
   });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    className: "cat-widget-root",
+
+  // ── Desktop ─────────────────────────────────────────────────────────────────
+
+  const desktopTopBar = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     style: {
-      fontFamily: "'Noto Sans', Arial, Helvetica, sans-serif"
+      backgroundColor: C.topBar,
+      display: "flex",
+      alignItems: "center",
+      padding: "0 24px",
+      height: "52px",
+      gap: "12px",
+      boxSizing: "border-box"
     },
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("header", {
-      ref: headerRef,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+      href: logoHref,
       style: {
-        backgroundColor: C.black,
-        height: "64px",
+        flexShrink: 0,
         display: "flex",
         alignItems: "center",
-        padding: "0 24px",
-        boxSizing: "border-box",
-        width: "100%",
-        position: "relative",
-        zIndex: 100
+        textDecoration: "none",
+        marginRight: "8px"
       },
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-        href: logoHref,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+        src: logoSrc,
+        alt: logoAlt,
         style: {
+          height: "32px",
+          display: "block"
+        }
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
+      onClick: onAddEquipment,
+      style: ghostBtn({
+        gap: "6px",
+        border: "1px solid rgba(255,255,255,0.2)",
+        borderRadius: "4px",
+        padding: "5px 12px",
+        flexShrink: 0
+      }),
+      onMouseEnter: e => e.currentTarget.style.borderColor = "rgba(255,255,255,0.45)",
+      onMouseLeave: e => e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(IconAddEquipment, {}), "Add Equipment"]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      style: {
+        width: "1px",
+        height: "28px",
+        backgroundColor: "rgba(255,255,255,0.15)",
+        flexShrink: 0
+      }
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("form", {
+      onSubmit: handleSearch,
+      style: {
+        flex: 1,
+        display: "flex",
+        alignItems: "center",
+        maxWidth: "640px",
+        minWidth: 0
+      },
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        style: {
+          flex: 1,
           display: "flex",
           alignItems: "center",
-          flexShrink: 0,
-          textDecoration: "none",
-          marginRight: "24px"
+          backgroundColor: C.white,
+          borderRadius: "4px 0 0 4px",
+          overflow: "hidden"
         },
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
-          src: logoSrc,
-          alt: logoAlt,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+          type: "text",
+          value: searchQuery,
+          onChange: e => setSearchQuery(e.target.value),
+          placeholder: searchPlaceholder,
           style: {
+            flex: 1,
+            border: "none",
+            outline: "none",
+            padding: "0 14px",
             height: "36px",
-            display: "block"
+            fontSize: "13px",
+            color: "#1A1A1A",
+            backgroundColor: "transparent"
           }
         })
-      }), !isMobile && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          style: {
-            display: "flex",
-            alignItems: "center",
-            gap: "2px",
-            flex: 1
-          },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
-            onClick: openShop,
-            "aria-expanded": shopOpen,
-            "aria-haspopup": "true",
-            style: {
-              ...navLinkStyle,
-              gap: "6px",
-              backgroundColor: shopOpen ? "rgba(255,255,255,0.1)" : "transparent"
-            },
-            onMouseEnter: e => {
-              if (!shopOpen) e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.08)";
-            },
-            onMouseLeave: e => {
-              if (!shopOpen) e.currentTarget.style.backgroundColor = "transparent";
-            },
-            children: ["Shop ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(IconChevron, {
-              open: shopOpen
-            })]
-          }), middleLinks.map(link => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-            href: link.href,
-            target: link.target,
-            rel: link.target === "_blank" ? "noopener noreferrer" : undefined,
-            style: navLinkStyle,
-            onMouseEnter: e => e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.08)",
-            onMouseLeave: e => e.currentTarget.style.backgroundColor = "transparent",
-            children: link.label
-          }, link.label))]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          style: {
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            flexShrink: 0
-          },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
-            onClick: onSelectStore,
-            style: {
-              ...navLinkStyle,
-              gap: "6px",
-              border: "1px solid rgba(255,255,255,0.25)",
-              borderRadius: "4px",
-              fontSize: "13px"
-            },
-            onMouseEnter: e => {
-              e.currentTarget.style.borderColor = C.yellow;
-              e.currentTarget.style.color = C.yellow;
-            },
-            onMouseLeave: e => {
-              e.currentTarget.style.borderColor = "rgba(255,255,255,0.25)";
-              e.currentTarget.style.color = C.white;
-            },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(IconLocation, {}), storeName || "Select Store"]
-          }), isSignedIn ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
-            onClick: onSignOut,
-            style: {
-              ...navLinkStyle,
-              gap: "8px"
-            },
-            onMouseEnter: e => e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.08)",
-            onMouseLeave: e => e.currentTarget.style.backgroundColor = "transparent",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-              style: {
-                width: 28,
-                height: 28,
-                borderRadius: "50%",
-                backgroundColor: C.yellow,
-                color: C.black,
-                fontSize: "12px",
-                fontWeight: 700,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexShrink: 0
-              },
-              children: (userName || "U").charAt(0).toUpperCase()
-            }), userName || "Account"]
-          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-            onClick: onSignIn,
-            style: {
-              backgroundColor: C.yellow,
-              border: "none",
-              color: C.black,
-              fontSize: "14px",
-              fontWeight: 700,
-              cursor: "pointer",
-              padding: "8px 18px",
-              borderRadius: "4px",
-              transition: "opacity 0.15s"
-            },
-            onMouseEnter: e => e.currentTarget.style.opacity = "0.85",
-            onMouseLeave: e => e.currentTarget.style.opacity = "1",
-            children: "Sign In"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
-            onClick: onCart,
-            "aria-label": `Cart${cartCount ? ` (${cartCount} items)` : ""}`,
-            style: {
-              ...navLinkStyle,
-              padding: "8px",
-              position: "relative"
-            },
-            onMouseEnter: e => e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.08)",
-            onMouseLeave: e => e.currentTarget.style.backgroundColor = "transparent",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(IconCart, {}), cartBadge]
-          })]
-        })]
-      }), isMobile && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+        type: "submit",
         style: {
+          backgroundColor: C.yellow,
+          border: "none",
+          width: "42px",
+          height: "36px",
           display: "flex",
           alignItems: "center",
-          gap: "4px",
-          marginLeft: "auto"
+          justifyContent: "center",
+          cursor: "pointer",
+          borderRadius: "0 4px 4px 0",
+          flexShrink: 0,
+          color: "#000"
         },
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
-          onClick: onCart,
-          "aria-label": `Cart${cartCount ? ` (${cartCount} items)` : ""}`,
-          style: {
-            ...navLinkStyle,
-            padding: "8px",
-            position: "relative"
-          },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(IconCart, {}), cartBadge]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          onClick: () => setMobileOpen(o => !o),
-          "aria-label": mobileOpen ? "Close menu" : "Open menu",
-          "aria-expanded": mobileOpen,
-          style: {
-            ...navLinkStyle,
-            padding: "8px"
-          },
-          children: mobileOpen ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(IconClose, {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(IconHamburger, {})
-        })]
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(IconSearch, {})
       })]
-    }), !isMobile && shopOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        onClick: () => setShopOpen(false),
-        style: {
-          position: "fixed",
-          inset: 0,
-          top: `${dropdownTop}px`,
-          zIndex: 98,
-          backgroundColor: "rgba(0,0,0,0.35)"
-        }
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        style: {
-          position: "fixed",
-          top: `${dropdownTop}px`,
-          left: 0,
-          right: 0,
-          backgroundColor: C.white,
-          boxShadow: "0 8px 24px rgba(0,0,0,0.18)",
-          zIndex: 99,
-          padding: "24px 40px 32px",
-          borderTop: `3px solid ${C.yellow}`
-        },
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          style: {
-            maxWidth: "1200px",
-            margin: "0 auto"
-          },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-            style: {
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              marginBottom: "20px"
-            },
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-              style: {
-                fontSize: "12px",
-                fontWeight: 700,
-                color: C.gray,
-                textTransform: "uppercase",
-                letterSpacing: "0.08em"
-              },
-              children: "Shop by Category"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-              href: seeAllCategoriesHref,
-              onClick: () => setShopOpen(false),
-              style: {
-                fontSize: "13px",
-                fontWeight: 600,
-                color: "#006FD6",
-                textDecoration: "none"
-              },
-              onMouseEnter: e => e.currentTarget.style.textDecoration = "underline",
-              onMouseLeave: e => e.currentTarget.style.textDecoration = "none",
-              children: "See All Categories \u2192"
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            style: {
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(120px, 1fr))",
-              gap: "8px"
-            },
-            children: categories.map(cat => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
-              href: cat.href,
-              onClick: () => setShopOpen(false),
-              style: {
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                textDecoration: "none",
-                padding: "12px 8px",
-                borderRadius: "8px",
-                gap: "8px",
-                transition: "background 0.15s"
-              },
-              onMouseEnter: e => e.currentTarget.style.backgroundColor = "#F5F5F5",
-              onMouseLeave: e => e.currentTarget.style.backgroundColor = "transparent",
-              children: [cat.imageUrl && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
-                src: cat.imageUrl,
-                alt: cat.label,
-                style: {
-                  width: "56px",
-                  height: "56px",
-                  objectFit: "contain"
-                }
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-                style: {
-                  fontSize: "12px",
-                  fontWeight: 600,
-                  color: C.black,
-                  textAlign: "center",
-                  lineHeight: 1.3
-                },
-                children: cat.label
-              })]
-            }, cat.href))
-          })]
-        })
-      })]
-    }), isMobile && mobileOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
       style: {
-        position: "fixed",
-        top: "64px",
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundColor: C.black,
-        zIndex: 99,
-        overflowY: "auto"
+        display: "flex",
+        alignItems: "center",
+        gap: "4px",
+        marginLeft: "auto",
+        flexShrink: 0
       },
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        style: {
-          padding: "20px 24px",
-          borderBottom: `1px solid ${C.border}`
-        },
-        children: isSignedIn ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
+        onClick: onSelectStore,
+        style: ghostBtn(),
+        onMouseEnter: e => e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.08)",
+        onMouseLeave: e => e.currentTarget.style.backgroundColor = "transparent",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(IconLocation, {}), storeName || "Select Store"]
+      }), isSignedIn ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
+        onClick: onSignOut,
+        style: ghostBtn(),
+        onMouseEnter: e => e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.08)",
+        onMouseLeave: e => e.currentTarget.style.backgroundColor = "transparent",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           style: {
+            width: 22,
+            height: 22,
+            borderRadius: "50%",
+            backgroundColor: C.yellow,
+            color: "#000",
+            fontSize: "11px",
+            fontWeight: 700,
             display: "flex",
             alignItems: "center",
-            gap: "12px"
+            justifyContent: "center"
           },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            style: {
-              width: 40,
-              height: 40,
-              borderRadius: "50%",
-              backgroundColor: C.yellow,
-              color: C.black,
-              fontSize: "16px",
-              fontWeight: 700,
-              flexShrink: 0,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center"
-            },
-            children: (userName || "U").charAt(0).toUpperCase()
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-              style: {
-                color: C.white,
-                fontWeight: 600,
-                fontSize: "15px"
-              },
-              children: userName || "Account"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-              onClick: () => {
-                onSignOut?.();
-                setMobileOpen(false);
-              },
-              style: {
-                background: "none",
-                border: "none",
-                color: C.gray,
-                fontSize: "13px",
-                cursor: "pointer",
-                padding: 0,
-                marginTop: "2px"
-              },
-              children: "Sign Out"
-            })]
-          })]
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          onClick: () => {
-            onSignIn?.();
-            setMobileOpen(false);
-          },
+          children: (userName || "U").charAt(0).toUpperCase()
+        }), userName || "Account"]
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
+        onClick: onSignIn,
+        style: ghostBtn(),
+        onMouseEnter: e => e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.08)",
+        onMouseLeave: e => e.currentTarget.style.backgroundColor = "transparent",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(IconUser, {}), "Sign In"]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
+        onClick: onCart,
+        "aria-label": `Cart${cartCount ? ` (${cartCount} items)` : ""}`,
+        style: ghostBtn({
+          padding: "6px 8px",
+          position: "relative"
+        }),
+        onMouseEnter: e => e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.08)",
+        onMouseLeave: e => e.currentTarget.style.backgroundColor = "transparent",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(IconCart, {}), cartBadge]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+        onClick: onWaffleMenu,
+        "aria-label": "All applications",
+        style: ghostBtn({
+          padding: "6px 8px"
+        }),
+        onMouseEnter: e => e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.08)",
+        onMouseLeave: e => e.currentTarget.style.backgroundColor = "transparent",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(IconWaffle, {})
+      })]
+    })]
+  });
+  const desktopNavBar = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    style: {
+      backgroundColor: C.navBar,
+      display: "flex",
+      alignItems: "center",
+      padding: "0 24px",
+      height: "40px",
+      borderTop: `1px solid ${C.divider}`,
+      boxSizing: "border-box"
+    },
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      style: {
+        display: "flex",
+        alignItems: "center",
+        gap: "2px"
+      },
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
+        onClick: handleShopClick,
+        "aria-expanded": shopOpen,
+        "aria-haspopup": "true",
+        style: ghostBtn({
+          gap: "5px",
+          backgroundColor: shopOpen ? "rgba(255,255,255,0.08)" : "transparent",
+          fontSize: "14px"
+        }),
+        onMouseEnter: e => {
+          if (!shopOpen) e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.08)";
+        },
+        onMouseLeave: e => {
+          if (!shopOpen) e.currentTarget.style.backgroundColor = "transparent";
+        },
+        children: ["Shop ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(IconChevron, {
+          open: shopOpen
+        })]
+      }), leftLinks.map(link => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+        href: link.href,
+        target: link.target,
+        rel: link.target === "_blank" ? "noopener noreferrer" : undefined,
+        style: {
+          ...ghostBtn(),
+          textDecoration: "none",
+          fontSize: "14px"
+        },
+        onMouseEnter: e => e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.08)",
+        onMouseLeave: e => e.currentTarget.style.backgroundColor = "transparent",
+        children: link.label
+      }, link.label))]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      style: {
+        display: "flex",
+        alignItems: "center",
+        gap: "2px",
+        marginLeft: "auto"
+      },
+      children: rightLinks.map(link => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
+        href: link.href,
+        target: link.target,
+        rel: link.target === "_blank" ? "noopener noreferrer" : undefined,
+        style: {
+          ...ghostBtn(),
+          textDecoration: "none",
+          fontSize: "13px",
+          gap: "5px"
+        },
+        onMouseEnter: e => e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.08)",
+        onMouseLeave: e => e.currentTarget.style.backgroundColor = "transparent",
+        children: [link.icon, link.label]
+      }, link.label))
+    })]
+  });
+
+  // ── Mobile top bar ──────────────────────────────────────────────────────────
+
+  const mobileTopBar = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    style: {
+      backgroundColor: C.topBar,
+      display: "flex",
+      alignItems: "center",
+      padding: "0 16px",
+      height: "52px",
+      gap: "8px",
+      boxSizing: "border-box"
+    },
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+      href: logoHref,
+      style: {
+        flexShrink: 0,
+        display: "flex",
+        alignItems: "center",
+        textDecoration: "none"
+      },
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+        src: logoSrc,
+        alt: logoAlt,
+        style: {
+          height: "28px",
+          display: "block"
+        }
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      style: {
+        flex: 1
+      }
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
+      onClick: onCart,
+      "aria-label": "Cart",
+      style: ghostBtn({
+        padding: "6px",
+        position: "relative"
+      }),
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(IconCart, {}), cartBadge]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+      onClick: () => setMobileOpen(o => !o),
+      "aria-label": mobileOpen ? "Close menu" : "Open menu",
+      "aria-expanded": mobileOpen,
+      style: ghostBtn({
+        padding: "6px"
+      }),
+      children: mobileOpen ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(IconClose, {}) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(IconHamburger, {})
+    })]
+  });
+
+  // ── Mobile overlay ──────────────────────────────────────────────────────────
+
+  const mobileOverlay = mobileOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    style: {
+      position: "fixed",
+      top: "52px",
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: C.navBar,
+      zIndex: 99,
+      overflowY: "auto"
+    },
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      style: {
+        padding: "16px",
+        borderBottom: `1px solid ${C.divider}`
+      },
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("form", {
+        onSubmit: handleSearch,
+        style: {
+          display: "flex"
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+          type: "text",
+          value: searchQuery,
+          onChange: e => setSearchQuery(e.target.value),
+          placeholder: searchPlaceholder,
+          style: {
+            flex: 1,
+            border: "none",
+            outline: "none",
+            padding: "0 12px",
+            height: "40px",
+            fontSize: "14px",
+            color: "#1A1A1A",
+            borderRadius: "4px 0 0 4px"
+          }
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+          type: "submit",
           style: {
             backgroundColor: C.yellow,
             border: "none",
-            color: C.black,
+            width: "44px",
+            height: "40px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+            borderRadius: "0 4px 4px 0",
+            color: "#000"
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(IconSearch, {})
+        })]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      style: {
+        padding: "16px",
+        borderBottom: `1px solid ${C.divider}`
+      },
+      children: isSignedIn ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        style: {
+          display: "flex",
+          alignItems: "center",
+          gap: "10px"
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          style: {
+            width: 36,
+            height: 36,
+            borderRadius: "50%",
+            backgroundColor: C.yellow,
+            color: "#000",
             fontSize: "15px",
             fontWeight: 700,
-            cursor: "pointer",
-            padding: "12px 24px",
-            borderRadius: "4px",
-            width: "100%"
+            flexShrink: 0,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
           },
-          children: "Sign In"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        style: {
-          padding: "16px 24px",
-          borderBottom: `1px solid ${C.border}`
+          children: (userName || "U").charAt(0).toUpperCase()
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            style: {
+              color: C.white,
+              fontWeight: 600,
+              fontSize: "14px"
+            },
+            children: userName || "Account"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            onClick: () => {
+              onSignOut?.();
+              setMobileOpen(false);
+            },
+            style: {
+              background: "none",
+              border: "none",
+              color: C.gray,
+              fontSize: "12px",
+              cursor: "pointer",
+              padding: 0,
+              marginTop: "2px"
+            },
+            children: "Sign Out"
+          })]
+        })]
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+        onClick: () => {
+          onSignIn?.();
+          setMobileOpen(false);
         },
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
-          onClick: () => {
-            onSelectStore?.();
-            setMobileOpen(false);
-          },
-          style: {
-            background: "none",
+        style: {
+          backgroundColor: C.yellow,
+          border: "none",
+          color: "#000",
+          fontSize: "14px",
+          fontWeight: 700,
+          cursor: "pointer",
+          padding: "10px 24px",
+          borderRadius: "4px",
+          width: "100%"
+        },
+        children: "Sign In"
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      style: {
+        padding: "12px 16px",
+        borderBottom: `1px solid ${C.divider}`,
+        display: "flex",
+        flexDirection: "column",
+        gap: "8px"
+      },
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
+        onClick: () => {
+          onSelectStore?.();
+          setMobileOpen(false);
+        },
+        style: {
+          ...ghostBtn({
+            gap: "8px",
             border: `1px solid rgba(255,255,255,0.2)`,
-            color: C.white,
-            fontSize: "14px",
-            fontWeight: 600,
-            cursor: "pointer",
-            padding: "10px 16px",
             borderRadius: "4px",
+            padding: "10px 16px",
             width: "100%",
+            justifyContent: "flex-start"
+          })
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(IconLocation, {}), " ", storeName || "Select Store"]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
+        onClick: () => {
+          onAddEquipment?.();
+          setMobileOpen(false);
+        },
+        style: {
+          ...ghostBtn({
+            gap: "8px",
+            border: `1px solid rgba(255,255,255,0.2)`,
+            borderRadius: "4px",
+            padding: "10px 16px",
+            width: "100%",
+            justifyContent: "flex-start"
+          })
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(IconAddEquipment, {}), " Add Equipment"]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      style: {
+        padding: "16px 16px 8px",
+        borderBottom: `1px solid ${C.divider}`
+      },
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        style: {
+          color: C.gray,
+          fontSize: "11px",
+          fontWeight: 700,
+          textTransform: "uppercase",
+          letterSpacing: "0.1em",
+          marginBottom: "12px"
+        },
+        children: "Shop"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+        href: seeAllCategoriesHref,
+        onClick: () => setMobileOpen(false),
+        style: {
+          display: "block",
+          color: C.yellow,
+          textDecoration: "none",
+          fontWeight: 600,
+          fontSize: "14px",
+          marginBottom: "12px"
+        },
+        children: "See All Categories \u2192"
+      }), leftLinks.map(link => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+        href: link.href,
+        target: link.target,
+        rel: link.target === "_blank" ? "noopener noreferrer" : undefined,
+        onClick: () => setMobileOpen(false),
+        style: {
+          display: "block",
+          color: C.white,
+          textDecoration: "none",
+          fontSize: "14px",
+          padding: "10px 0",
+          borderBottom: `1px solid ${C.divider}`
+        },
+        children: link.label
+      }, link.label)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        style: {
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "2px",
+          marginTop: "8px",
+          paddingBottom: "8px"
+        },
+        children: categories.map(cat => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
+          href: cat.href,
+          onClick: () => setMobileOpen(false),
+          style: {
+            color: C.white,
+            textDecoration: "none",
+            fontSize: "13px",
+            padding: "8px",
+            borderRadius: "4px",
             display: "flex",
             alignItems: "center",
             gap: "8px"
           },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(IconLocation, {}), storeName || "Select Store"]
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          onMouseEnter: e => e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.08)",
+          onMouseLeave: e => e.currentTarget.style.backgroundColor = "transparent",
+          children: [cat.imageUrl && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+            src: cat.imageUrl,
+            alt: "",
+            style: {
+              width: "24px",
+              height: "24px",
+              objectFit: "contain",
+              flexShrink: 0
+            }
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+            style: {
+              lineHeight: 1.3
+            },
+            children: cat.label
+          })]
+        }, cat.href))
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      style: {
+        padding: "16px 16px 32px"
+      },
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
         style: {
-          padding: "20px 24px 8px",
-          borderBottom: `1px solid ${C.border}`
+          color: C.gray,
+          fontSize: "11px",
+          fontWeight: 700,
+          textTransform: "uppercase",
+          letterSpacing: "0.1em",
+          marginBottom: "10px"
         },
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        children: "Account"
+      }), rightLinks.map(link => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
+        href: link.href,
+        target: link.target,
+        rel: link.target === "_blank" ? "noopener noreferrer" : undefined,
+        onClick: () => setMobileOpen(false),
+        style: {
+          display: "flex",
+          alignItems: "center",
+          gap: "8px",
+          color: C.white,
+          textDecoration: "none",
+          fontSize: "14px",
+          padding: "12px 0",
+          borderBottom: `1px solid ${C.divider}`
+        },
+        children: [link.icon, " ", link.label]
+      }, link.label))]
+    })]
+  });
+
+  // ── Shop mega-dropdown ──────────────────────────────────────────────────────
+
+  const shopDropdown = !isMobile && shopOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      onClick: () => setShopOpen(false),
+      style: {
+        position: "fixed",
+        inset: 0,
+        top: `${dropdownTop}px`,
+        zIndex: 98,
+        backgroundColor: "rgba(0,0,0,0.4)"
+      }
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      style: {
+        position: "fixed",
+        top: `${dropdownTop}px`,
+        left: 0,
+        right: 0,
+        backgroundColor: "#fff",
+        boxShadow: "0 8px 24px rgba(0,0,0,0.18)",
+        zIndex: 99,
+        padding: "24px 40px 32px",
+        borderTop: `3px solid ${C.yellow}`
+      },
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        style: {
+          maxWidth: "1200px",
+          margin: "0 auto"
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           style: {
-            color: C.gray,
-            fontSize: "11px",
-            fontWeight: 700,
-            textTransform: "uppercase",
-            letterSpacing: "0.1em",
-            marginBottom: "14px"
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginBottom: "20px"
           },
-          children: "Shop"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-          href: seeAllCategoriesHref,
-          onClick: () => setMobileOpen(false),
-          style: {
-            display: "block",
-            color: C.yellow,
-            textDecoration: "none",
-            fontWeight: 600,
-            fontSize: "14px",
-            marginBottom: "14px"
-          },
-          children: "See All Categories \u2192"
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+            style: {
+              fontSize: "11px",
+              fontWeight: 700,
+              color: C.gray,
+              textTransform: "uppercase",
+              letterSpacing: "0.08em"
+            },
+            children: "Shop by Category"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+            href: seeAllCategoriesHref,
+            onClick: () => setShopOpen(false),
+            style: {
+              fontSize: "13px",
+              fontWeight: 600,
+              color: "#006FD6",
+              textDecoration: "none"
+            },
+            onMouseEnter: e => e.currentTarget.style.textDecoration = "underline",
+            onMouseLeave: e => e.currentTarget.style.textDecoration = "none",
+            children: "See All Categories \u2192"
+          })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           style: {
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "2px",
-            paddingBottom: "12px"
+            gridTemplateColumns: "repeat(auto-fill, minmax(110px, 1fr))",
+            gap: "8px"
           },
           children: categories.map(cat => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("a", {
             href: cat.href,
-            onClick: () => setMobileOpen(false),
+            onClick: () => setShopOpen(false),
             style: {
-              color: C.white,
-              textDecoration: "none",
-              fontSize: "13px",
-              padding: "10px 8px",
-              borderRadius: "4px",
               display: "flex",
+              flexDirection: "column",
               alignItems: "center",
-              gap: "10px"
+              textDecoration: "none",
+              padding: "10px 6px",
+              borderRadius: "6px",
+              gap: "8px",
+              transition: "background 0.15s"
             },
-            onMouseEnter: e => e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.08)",
+            onMouseEnter: e => e.currentTarget.style.backgroundColor = "#F5F5F5",
             onMouseLeave: e => e.currentTarget.style.backgroundColor = "transparent",
             children: [cat.imageUrl && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
               src: cat.imageUrl,
-              alt: "",
+              alt: cat.label,
               style: {
-                width: "28px",
-                height: "28px",
-                objectFit: "contain",
-                flexShrink: 0
+                width: "52px",
+                height: "52px",
+                objectFit: "contain"
               }
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
               style: {
+                fontSize: "11px",
+                fontWeight: 600,
+                color: "#1A1A1A",
+                textAlign: "center",
                 lineHeight: 1.3
               },
               children: cat.label
             })]
           }, cat.href))
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        style: {
-          padding: "16px 24px 32px"
-        },
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-          style: {
-            color: C.gray,
-            fontSize: "11px",
-            fontWeight: 700,
-            textTransform: "uppercase",
-            letterSpacing: "0.1em",
-            marginBottom: "12px"
-          },
-          children: "Account"
-        }), middleLinks.map(link => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-          href: link.href,
-          target: link.target,
-          rel: link.target === "_blank" ? "noopener noreferrer" : undefined,
-          onClick: () => setMobileOpen(false),
-          style: {
-            display: "block",
-            color: C.white,
-            textDecoration: "none",
-            fontSize: "15px",
-            fontWeight: 500,
-            padding: "14px 0",
-            borderBottom: `1px solid ${C.border}`
-          },
-          children: link.label
-        }, link.label))]
-      })]
+      })
     })]
+  });
+
+  // ── Render ──────────────────────────────────────────────────────────────────
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    ref: wrapperRef,
+    className: "cat-widget-root",
+    style: {
+      fontFamily: "'Noto Sans', Arial, Helvetica, sans-serif"
+    },
+    children: [isMobile ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+      children: [mobileTopBar, mobileOverlay]
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+      children: [desktopTopBar, desktopNavBar]
+    }), shopDropdown]
   });
 }
 
