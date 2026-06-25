@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { GlobalMenuWidget } from "@/widgets/global-menu/GlobalMenuWidget";
 import { AccountWidget, AccountUser } from "@/widgets/account/AccountWidget";
 import { DealerLocatorWidget } from "@/widgets/dealer-locator/DealerLocatorWidget";
+import { SelectStoreWidget } from "@/widgets/select-store/SelectStoreWidget";
 
 const DEMO_USER: AccountUser = {
   id: "u1",
@@ -16,7 +17,7 @@ const DEMO_USER: AccountUser = {
 export default function Home() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [loginError, setLoginError] = useState("");
-  const [activeTab, setActiveTab] = useState<"menu" | "account" | "dealer">("menu");
+  const [activeTab, setActiveTab] = useState<"menu" | "account" | "dealer" | "store">("menu");
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogin = async (creds: { email: string; password: string }) => {
@@ -33,6 +34,7 @@ export default function Home() {
     { id: "menu" as const, label: "Global Menu" },
     { id: "account" as const, label: "Account Widget" },
     { id: "dealer" as const, label: "Dealer Locator" },
+    { id: "store" as const, label: "Select Store" },
   ];
 
   return (
@@ -211,6 +213,34 @@ export default function Home() {
             <div style={{ marginTop: "20px" }}>
               <DealerLocatorWidget
                 onDealerSelect={(d) => console.log("Selected dealer:", d)}
+              />
+            </div>
+          </div>
+        )}
+
+        {activeTab === "store" && (
+          <div>
+            <SectionHeader
+              title="Select Store"
+              description="Let users pick a nearby Cat dealer store for price and availability. Renders as a panel or inside a modal on the host page."
+              embedCode={`<div id="cat-select-store"></div>
+<script src="/widgets/cat-select-store.js"></script>
+<script>
+  CATSelectStore.mount('#cat-select-store', {
+    initialQuery: 'San Francisco, California, United States',
+    onSearch: async (query) => {
+      const res = await fetch(\`/api/stores?q=\${query}\`);
+      return res.json();
+    },
+    onStoreSelect: (store) => console.log('Selected store:', store),
+    onClose: () => { document.getElementById('cat-select-store').style.display = 'none'; }
+  });
+</script>`}
+            />
+            <div style={{ marginTop: "20px" }}>
+              <SelectStoreWidget
+                onStoreSelect={(s) => alert(`Selected: ${s.dealerName} — ${s.locationName}`)}
+                onClose={() => alert("Close clicked")}
               />
             </div>
           </div>

@@ -10,6 +10,7 @@ module.exports = {
     "cat-global-menu": "./src/widgets/global-menu/embed.ts",
     "cat-account": "./src/widgets/account/embed.ts",
     "cat-dealer-locator": "./src/widgets/dealer-locator/embed.ts",
+    "cat-select-store": "./src/widgets/select-store/embed.ts",
   },
 
   output: {
