@@ -8,6 +8,7 @@ import { SelectStoreWidget } from "@/widgets/select-store/SelectStoreWidget";
 import { OrderHistoryWidget } from "@/widgets/order-history/OrderHistoryWidget";
 import { SISWidget } from "@/widgets/sis/SISWidget";
 import { AddEquipmentWidget } from "@/widgets/add-equipment/AddEquipmentWidget";
+import { HeaderWidget } from "@/widgets/header/HeaderWidget";
 
 const DEMO_USER: AccountUser = {
   id: "u1",
@@ -20,7 +21,7 @@ const DEMO_USER: AccountUser = {
 export default function Home() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [loginError, setLoginError] = useState("");
-  const [activeTab, setActiveTab] = useState<"menu" | "account" | "dealer" | "store" | "orders" | "sis" | "equipment">("menu");
+  const [activeTab, setActiveTab] = useState<"menu" | "account" | "dealer" | "store" | "orders" | "sis" | "equipment" | "header">("menu");
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogin = async (creds: { email: string; password: string }) => {
@@ -41,6 +42,7 @@ export default function Home() {
     { id: "orders" as const, label: "Order History" },
     { id: "sis" as const, label: "SIS" },
     { id: "equipment" as const, label: "Add Equipment" },
+    { id: "header" as const, label: "Header" },
   ];
 
   return (
@@ -295,6 +297,39 @@ export default function Home() {
                 onClose={() => alert("Close clicked")}
               />
             </div>
+          </div>
+        )}
+
+        {activeTab === "header" && (
+          <div>
+            <SectionHeader
+              title="Header"
+              description="Full-site navigation header with Shop mega-menu, store selector, sign-in, and cart. Fully responsive — collapses to a hamburger menu on mobile."
+              embedCode={`<header id="cat-header" style="position: sticky; top: 0; z-index: 100;"></header>
+<script src="/widgets/cat-header.js"></script>
+<script>
+  CATHeader.mount('#cat-header', {
+    storeName: 'Los Angeles Branch',   // optional — shows "Select Store" if omitted
+    cartCount: 3,
+    isSignedIn: false,
+    onSelectStore: () => { /* open store picker */ },
+    onSignIn:      () => { window.location.href = '/sign-in'; },
+    onCart:        () => { window.location.href = '/cart'; },
+  });
+</script>`}
+            />
+            <div style={{ marginTop: "20px", borderRadius: "8px", overflow: "hidden", border: "1px solid #E5E5E5" }}>
+              <HeaderWidget
+                cartCount={2}
+                storeName="Los Angeles Branch"
+                onSelectStore={() => alert("Select Store clicked")}
+                onSignIn={() => alert("Sign In clicked")}
+                onCart={() => alert("Cart clicked")}
+              />
+            </div>
+            <p style={{ marginTop: "12px", fontSize: "13px", color: "#6B6B6B" }}>
+              Hover <strong>Shop</strong> to open the mega-menu. Resize the window below 900 px to see the mobile layout.
+            </p>
           </div>
         )}
 

@@ -14,6 +14,7 @@ module.exports = {
     "cat-order-history": "./src/widgets/order-history/embed.ts",
     "cat-sis": "./src/widgets/sis/embed.ts",
     "cat-add-equipment": "./src/widgets/add-equipment/embed.ts",
+    "cat-header": "./src/widgets/header/embed.ts",
   },
 
   output: {
